@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "../css/List.css";
 import ListCompletedBtn from "./ListCompletedBtn";
 
+
 /*Material*/
 
 
@@ -13,8 +14,7 @@ class ListItem extends Component {
     
     render() {
         return (
-            
-            <div className="listItem">
+            <div className="listItem col-lg-8 ">
                 <div className="listItemNumber">{this.props.number}</div>
                 <div className="listItemWord">{this.props.word}</div>
                 <div className="listItemContent">{this.props.explanation}</div>

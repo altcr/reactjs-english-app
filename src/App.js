@@ -4,6 +4,7 @@ import './css/App.css';
 /*Components*/
 import Header from './components/Header';
 import WordList from './components/WordList';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends React.Component{
   constructor(props) {

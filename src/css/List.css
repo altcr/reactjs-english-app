@@ -8,8 +8,7 @@
   padding: 10px 10px 0px 10px;
 }
 .listItem {
-  width: 70%;
-  height: 50px;
+  height: auto;
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
@@ -22,19 +21,20 @@
   height: 50px;
   display: flex;
   align-items: center;
-  font-size: 1vw;
+  font-size: 18px;
 }
 .listItemWord {
   width: 20%;
   height: 50px;
   display: flex;
   align-items: center;
-  font-size: 1vw;
+  font-size: 18px;
 }
 .listItemContent {
   width: 60%;
   height: 50px;
   display: flex;
+  font-size: 18px;
   align-items: center;
 }
 .listItemIcons {
@@ -43,12 +43,27 @@
   display: flex;
   align-items: center;
 }
-.btnAdd {
-  width: 50px;
-  height: 50px;
-  background-color: "#58b368";
-  padding: "10px";
-  border-radius: "100%";
-  cursor: "pointer";
-  color: "white";
+.selectDiv {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .buttonGroups {
+    display: none;
+  }
+  .listItem {
+    max-width: 100% !important;
+  }
+  .listItemNumber {
+    font-size: 14px;
+  }
+  .listItemWord {
+    font-size: 14px;
+  }
+  .listItemContent {
+    font-size: 14px;
+  }
+  .selectDiv {
+    display: block;
+  }
 }
