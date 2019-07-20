@@ -10,16 +10,21 @@ class ListItem extends Component {
     constructor(props) {
         super(props);
         this.state = {}
+        this.onAdd = this.onAdd.bind(this);
     }
-    
-    render() {
+
+    onAdd(wordKey){
+        this.props.onAdd(wordKey);
+    }
+
+    render() { 
         return (
             <div className="listItem col-lg-8 ">
                 <div className="listItemNumber">{this.props.number}</div>
                 <div className="listItemWord">{this.props.word}</div>
                 <div className="listItemContent">{this.props.explanation}</div>
                 <div className="listItemIcons">  
-                    <ListCompletedBtn />
+                    <ListCompletedBtn wordKey={this.props.wordKey} onAdd={this.onAdd}/>
                 </div>
             </div>
         );

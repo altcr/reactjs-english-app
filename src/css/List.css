@@ -43,13 +43,47 @@
   display: flex;
   align-items: center;
 }
+
 .selectDiv {
   display: none;
+}
+
+.buttonGroups > button {
+  width: 50px;
+  height: 50px;
+  border-radius: 100% !important;
+  border: 0px;
+  margin-right: 10px;
+  color: white;
+  outline: none !important;
+}
+
+.btnAdd {
+  background-color: #5cb85c;
+}
+.btnEdit {
+  background-color: #f0ad4e;
+}
+.btnDel {
+  background-color: #d9534f;
+}
+
+.btnAdd:hover {
+  background-color: #47a447;
+}
+.btnEdit:hover {
+  background-color: #ed9c28;
+}
+.btnDel:hover {
+  background-color: #d2322d;
 }
 
 @media screen and (max-width: 1024px) {
   .buttonGroups {
     display: none;
+  }
+  .selectDiv {
+    display: block;
   }
   .listItem {
     max-width: 100% !important;
@@ -62,8 +96,5 @@
   }
   .listItemContent {
     font-size: 14px;
-  }
-  .selectDiv {
-    display: block;
   }
 }

@@ -17,6 +17,7 @@ class WordList extends Component {
         }
 
         this.handlePageChange = this.handlePageChange.bind(this);
+        this.onAdd = this.onAdd.bind(this);
     }
     
     componentDidMount(){
@@ -57,17 +58,29 @@ class WordList extends Component {
         });
     }
 
+    onAdd(wordKey){
+        let updateWords = this.state.data;
+        updateWords[wordKey].status = 0;
+        this.setState({data : updateWords});
+    }
+
     renderItem(){
         var datas = this.state.data;
         const keys = Object.keys(datas);
         var number = this.state.activePage === 1 ? 0 : (this.state.activePage * 10) - 10 ;
-        return keys.map((item, key) =>
+        return keys.map((item, key) => 
+        datas[item].status === 1 
+            ?
             <ListItem
                     key={key} 
+                    wordKey={key} 
                     number={++number} 
                     word={datas[item].word} 
                     explanation={datas[item].explanation}
-            />
+                    onAdd={this.onAdd}
+            /> 
+            :
+            null
         );
     }
 
