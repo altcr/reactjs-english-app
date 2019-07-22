@@ -5,7 +5,6 @@ import '../css/Header.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -40,6 +39,10 @@ export default function Header() {
         setState({ ...state, [side]: open });
     };
 
+    const btnCompleted = () => {
+        console.log("Tıklandı");
+    };
+
     const sideList = side => (
         <div
         className={classes.list}
@@ -48,17 +51,8 @@ export default function Header() {
         onKeyDown={toggleDrawer(side, false)}
         >
         <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-            </ListItem>
-            ))}
-        </List>
-        <Divider />
-        <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
+            {['Completed'].map((text, index) => (
+            <ListItem button key={text} onClick={btnCompleted}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
             </ListItem>
@@ -70,6 +64,7 @@ export default function Header() {
         <div className="headerContainer">
             <div className="headerMenuIcon">
             <IconButton
+                 style={{outline: "none"}}
                 onClick={toggleDrawer('left', true)}>
                 <MenuIcon style={{color:"white"}}/>
             </IconButton>

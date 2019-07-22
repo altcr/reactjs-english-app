@@ -61,7 +61,20 @@ class WordList extends Component {
     onAdd(wordKey){
         let updateWords = this.state.data;
         updateWords[wordKey].status = 0;
-        this.setState({data : updateWords});
+
+        let url = "http://127.0.0.1:8000/api/englishapp/update/id/" + updateWords[wordKey].id;
+        
+        axios.put(url, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => {
+            this.setState({data : updateWords});
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
     renderItem(){
