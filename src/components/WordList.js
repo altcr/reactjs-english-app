@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 import "../css/List.css";
 import ListItem from './ListItem';
 import Pagination from "react-js-pagination";
+import Completed from "./Completed";
 
 
 class WordList extends Component {
@@ -99,20 +101,32 @@ class WordList extends Component {
 
     render() {
         return (
-            <div className="listContainer">
-                {this.renderItem()}
-                <div className="d-flex justify-content-center col-md-12">
-                    <Pagination
-                    activePage={this.state.activePage}
-                    itemsCountPerPage={this.state.itemsCountPerPage}
-                    totalItemsCount={this.state.totalItemsCount}
-                    pageRangeDisplayed={this.state.pageRangeDisplayed}
-                    onChange={this.handlePageChange}
-                    itemClass="page-item"
-                    linkClass="page-link"
-                    />
-                </div>
-            </div>
+            <Router>
+                <Switch>
+                    <Route path="/" exact render={
+                        () => {
+                            return(
+                                <div className="listContainer">
+                                    {this.renderItem()}
+                                    <div className="d-flex justify-content-center col-md-12">
+                                        <Pagination
+                                        activePage={this.state.activePage}
+                                        itemsCountPerPage={this.state.itemsCountPerPage}
+                                        totalItemsCount={this.state.totalItemsCount}
+                                        pageRangeDisplayed={this.state.pageRangeDisplayed}
+                                        onChange={this.handlePageChange}
+                                        itemClass="page-item"
+                                        linkClass="page-link"
+                                        />
+                                    </div>
+                                </div>
+                            )
+                        }
+                    } />
+                    <Route path="/completed" exact strict component={Completed} />
+                </Switch>
+            </Router>
+            
         );
     }
 }

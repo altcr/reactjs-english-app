@@ -1,5 +1,6 @@
 import React from "react";
 import '../css/Header.css';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 
 /*Material*/
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,6 +13,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+
 
 const useStyles = makeStyles({
     list: {
@@ -39,10 +41,6 @@ export default function Header() {
         setState({ ...state, [side]: open });
     };
 
-    const btnCompleted = () => {
-        console.log("Tıklandı");
-    };
-
     const sideList = side => (
         <div
         className={classes.list}
@@ -52,10 +50,14 @@ export default function Header() {
         >
         <List>
             {['Completed'].map((text, index) => (
-            <ListItem button key={text} onClick={btnCompleted}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-            </ListItem>
+                <Router>
+                    <Link to="/completed">
+                        <ListItem button key={text}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    </Link>
+                </Router>
             ))}
         </List>
         </div>
@@ -64,7 +66,7 @@ export default function Header() {
         <div className="headerContainer">
             <div className="headerMenuIcon">
             <IconButton
-                 style={{outline: "none"}}
+                style={{outline: "none"}}
                 onClick={toggleDrawer('left', true)}>
                 <MenuIcon style={{color:"white"}}/>
             </IconButton>
